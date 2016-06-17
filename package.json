@@ -1,0 +1,32 @@
+{
+  "name": "node-genius-lyrics",
+  "version": "0.0.0",
+  "description": "Adds extra functionality to node-genius",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scf4/node-genius-lyrics.git"
+  },
+  "keywords": [
+    "lyrics",
+    "scrape",
+    "genius",
+    "node-genius"
+  ],
+  "author": "Scott Michael <beats.cd@me.com> (https://twitter.com/scf4)",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.0",
+    "jshint-stylish": "^2.0.0",
+    "express": "^4.12.4"
+  },
+  "dependencies": {
+    "request": "^2.57.0",
+    "node-genius": "^1.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/scf4/node-genius-lyrics/issues"
+  },
+  "homepage": "https://github.com/scf4/node-genius-lyrics#readme"
+}
