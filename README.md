@@ -25,7 +25,7 @@ lyrical.song(714198, function (err, song) {
 You can also search by keywords, including lyrics:
 ```js
 lyrical.song({search: "spirit of my silence I can hear you"}, function (err, song) {
-  console.log("%s - %s", song.primary_artist, song.title);
+  console.log("%s - %s", song.primary_artist.name, song.title);
 });
 ```
 ```js
@@ -34,7 +34,7 @@ lyrical.song({search: "spirit of my silence I can hear you"}, function (err, son
 or by artist/title:
 ```js
 lyrical.song({search: "Kanye West Famous"}, function (err, song) {
-  console.log("%s - %s", song.primary_artist, song.title);
+  console.log("%s - %s", song.primary_artist.name, song.title);
 });
 ```
 ```js
@@ -42,7 +42,7 @@ lyrical.song({search: "Kanye West Famous"}, function (err, song) {
 ```
 ## Look up an album
 
-Use `album()` to look up an album by ID. The API cant search an album by title, but `song()` returns `songs.album.id`:
+Use `album()` to look up an album by ID. The API can't search an album by title, but `song()` returns `songs.album.id`:
 ```js
 lyrical.album(56682, function(err, album) {
   console.log("%s by %s was released on %s", album.name, album.artist.name,album.release_date);
