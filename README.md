@@ -107,7 +107,8 @@ url: "http://genius.com/artists/Jay-z",
 current_user_metadata: {...},
 description_annotation: {...},
 user: null,
-songs: [...]
+songs: [...],
+next_page: 2
 }
 ```
 ## Get songs by an artist
@@ -118,8 +119,8 @@ lyrical.artist(2, function(err, artist) {
         console.log(artist.songs[i].name);
 });
 ```
-`artist()` will show  **20 results per page** by default, and can be as high as 50. You can specify the page number like this:
+`artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the next page number, or `null` if there are no more pages. You can specify the page number like this:
 ```js
-lyrical.artist(2, {page: 2, per_page: 50}, function(err, album) { });
+lyrical.artist(2, {page: 2, per_page: 50}, function(err, artist) { });
 ```
 `artist()` will **not** fetch lyrics. Lyrical scrapes the Genius.com website for lyrics and this would result in too many concurrent page requests.
