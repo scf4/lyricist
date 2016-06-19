@@ -1,0 +1,114 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish', './' ]
+2 info using npm@2.15.5
+3 info using node@v4.4.5
+4 verbose publish [ './' ]
+5 silly cache add args [ './', null ]
+6 verbose cache add spec ./
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: './',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: './',
+7 silly cache add   spec: '/Users/Scott/Web Projects/lyrical-module/lyrical',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/Scott/.npm/lyrical/0.1.0/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/Scott/.npm correctMkdir not in flight; initializing
+10 verbose tar pack [ '/Users/Scott/.npm/lyrical/0.1.0/package.tgz',
+10 verbose tar pack   '/Users/Scott/Web Projects/lyrical-module/lyrical' ]
+11 verbose tarball /Users/Scott/.npm/lyrical/0.1.0/package.tgz
+12 verbose folder /Users/Scott/Web Projects/lyrical-module/lyrical
+13 info prepublish lyrical@0.1.0
+14 verbose addLocalTarball adding from inside cache /Users/Scott/.npm/lyrical/0.1.0/package.tgz
+15 verbose correctMkdir /Users/Scott/.npm correctMkdir not in flight; initializing
+16 silly cache afterAdd lyrical@0.1.0
+17 verbose afterAdd /Users/Scott/.npm/lyrical/0.1.0/package/package.json not in flight; writing
+18 verbose correctMkdir /Users/Scott/.npm correctMkdir not in flight; initializing
+19 verbose afterAdd /Users/Scott/.npm/lyrical/0.1.0/package/package.json written
+20 silly publish { name: 'lyrical',
+20 silly publish   version: '0.1.0',
+20 silly publish   description: 'Fetches song lyrics using the Genius.com API and website. Uses the [node-genius](https://github.com/alexbooker/node-genius) client.',
+20 silly publish   main: 'lib/index.js',
+20 silly publish   repository: { type: 'git', url: 'git+https://github.com/scf4/lyrical.git' },
+20 silly publish   keywords: [ 'lyric', 'lyrics', 'scrape', 'genius', 'node-genius' ],
+20 silly publish   author:
+20 silly publish    { name: 'Scott Michael',
+20 silly publish      email: 'beats.cd@me.com',
+20 silly publish      url: 'https://twitter.com/scf4' },
+20 silly publish   license: 'MIT',
+20 silly publish   devDependencies:
+20 silly publish    { gulp: '^3.9.0',
+20 silly publish      'gulp-jshint': '^1.11.0',
+20 silly publish      'jshint-stylish': '^2.0.0',
+20 silly publish      express: '^4.12.4' },
+20 silly publish   dependencies:
+20 silly publish    { cheerio: '^0.20.0',
+20 silly publish      'node-genius': '^1.1.0',
+20 silly publish      request: '^2.57.0' },
+20 silly publish   bugs: { url: 'https://github.com/scf4/lyrical/issues' },
+20 silly publish   homepage: 'https://github.com/scf4/lyrical#readme',
+20 silly publish   readme: '# Lyrical\n\nFetches song lyrics using the Genius.com API and website. Uses the [node-genius](https://github.com/alexbooker/node-genius) client.\n\n## Installation\n```\n$ npm install --save lyrical\n```\n\n## API Key\nGet an API key at https://genius.com/api-clients.\n```js\nvar lyrical = require(\'lyrical\')(api_key);\n```\n## Look up a song\nUse `song()` to fetch a single song:\n```js\nlyrical.song(714198, function (err, song) {\n  console.log(song.lyrics);\n});\n```\n```js\n//output: Spirit of my silence I can [...] never see us again\n```\nYou can also search by keywords, including lyrics:\n```js\nlyrical.song({search: "spirit of my silence I can hear you"}, function (err, song) {\n  console.log("%s - %s", song.primary_artist.name, song.title);\n});\n```\n```js\n//output: Sufjan Stevens - Death with Dignity\n```\nor by artist/title:\n```js\nlyrical.song({search: "Kanye West Famous"}, function (err, song) {\n  console.log("%s - %s", song.primary_artist.name, song.title);\n});\n```\n```js\n//output: Kanye West - Famous\n```\n## Look up an album\n\nUse `album()` to look up an album by ID. The API can\'t search an album by title, but `song()` will return a `songs.album.id`:\n```js\nlyrical.album(56682, function(err, album) {\n  console.log("%s by %s was released on %s", album.name, album.artist.name,album.release_date);\n});\n```\n```js\n//output: Lanterns by Son Lux was released on 2013-08-21\n```\nThe returned `album` object looks like this:\n```js\n{\napi_path: "/albums/56682",\ncover_art_url: "https://images.genius.com/697732b0160cfd90f5cde6db0b6555b0.1000x1000x1.jpg",\nid: 56682,\nname: "Lanterns",\nurl: "http://genius.com/albums/Son-lux/Lanterns",\nartist: {...},\ndescription_annotation: {...},\nrelease_date: "2013-08-21",\nsongs: [...]\n}\n```\n## Get songs in an album\n`album()` provides the `album.songs` array as seen above. Example usage:\n```js\nlyrical.album(56682, function(err, album) {\n  for(var i in album.songs)\n    console.log(album.songs[i].title);\n});\n```\n```js\n//output: Alternate World \\n Lost It To Trying \\n[...]\n```\nWhen fetching multiple songs, `.lyrics` will be `null` unless you explicitly request them like this:\n```js\nlyrical.album(56682, {fetch_lyrics: true}, function(err, album) {});\n```\n## Look up an artist\nUse `artist()` to look up an artist by ID:\n```js\nlyrical.artist(2, function(err, artist) {\n  console.log(artist.name);\n});\n```\n```js\n//output: Jay Z\n```\nThe returned `artist` object looks like this:\n```js\n{\napi_path: "/artists/2",\ndescription: {...},\nfacebook_name: "JayZ",\nfollowers_count: 3117,\nheader_image_url: "https://images.genius.com/0d53c56a247ef39e4106718deb95f347.1000x500x1.jpg",\nid: 2,\nimage_url: "https://images.genius.com/0d53c56a247ef39e4106718deb95f347.1000x500x1.jpg",\ninstagram_name: "officials_c_",\nname: "Jay Z",\ntwitter_name: "S_C_",\nurl: "http://genius.com/artists/Jay-z",\ncurrent_user_metadata: {...},\ndescription_annotation: {...},\nuser: null,\nsongs: [...],\nnext_page: 2\n}\n```\n## Get songs by an artist\n`artist()` will provide the `artist.songs` array. Example usage:\n```js\nlyrical.artist(2, {get_songs: true}, function(err, artist) {\n    for(var i in artist.songs)\n        console.log(artist.songs[i].title);\n});\n```\n```js\n//output: \'03 Bonnie & Clyde\\n100$ Bill[...]\n\n```\n`artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the `next_page` number assuming there are more pages. You can specify the page number like this:\n```js\nlyrical.artist(2, {page: 2, per_page: 50}, function(err, artist) { });\n```\n`artist()` will **not** fetch lyrics. Lyrical scrapes the Genius.com website for lyrics and this would result in too many concurrent page requests.\n',
+20 silly publish   readmeFilename: 'README.md',
+20 silly publish   gitHead: '0d3efaf0e475af90acd49d09fcc39a151e466048',
+20 silly publish   _id: 'lyrical@0.1.0',
+20 silly publish   scripts: {},
+20 silly publish   _shasum: 'fae26d3a5ff1f452761a6bbabcffada0b59df3e6',
+20 silly publish   _from: '.' }
+21 verbose getPublishConfig undefined
+22 silly mapToRegistry name lyrical
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry https://registry.npmjs.org/
+25 silly mapToRegistry data Result {
+25 silly mapToRegistry   raw: 'lyrical',
+25 silly mapToRegistry   scope: null,
+25 silly mapToRegistry   name: 'lyrical',
+25 silly mapToRegistry   rawSpec: '',
+25 silly mapToRegistry   spec: 'latest',
+25 silly mapToRegistry   type: 'tag' }
+26 silly mapToRegistry uri https://registry.npmjs.org/lyrical
+27 verbose publish registryBase https://registry.npmjs.org/
+28 silly publish uploading /Users/Scott/.npm/lyrical/0.1.0/package.tgz
+29 verbose request uri https://registry.npmjs.org/lyrical
+30 verbose request sending authorization for write operation
+31 info attempt registry request try #1 at 6:05:26 PM
+32 verbose request using bearer token for auth
+33 verbose request id fba1b072296772f6
+34 http request PUT https://registry.npmjs.org/lyrical
+35 http 403 https://registry.npmjs.org/lyrical
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=300',
+36 verbose headers   'content-length': '101',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Sun, 19 Jun 2016 17:05:28 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-lhr6323-LHR',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1466355927.672376,VS0,VE691',
+36 verbose headers   vary: 'Accept-Encoding' }
+37 verbose request invalidating /Users/Scott/.npm/registry.npmjs.org/lyrical on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: you do not have permission to publish "lyrical". Are you logged in as the correct user? : lyrical
+39 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+39 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+39 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:200:22)
+39 verbose stack     at emitTwo (events.js:87:13)
+39 verbose stack     at Request.emit (events.js:172:7)
+39 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+39 verbose stack     at emitOne (events.js:82:20)
+39 verbose stack     at Request.emit (events.js:169:7)
+39 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:988:12)
+40 verbose statusCode 403
+41 verbose pkgid lyrical
+42 verbose cwd /Users/Scott/Web Projects/lyrical-module/lyrical
+43 error Darwin 15.5.0
+44 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish" "./"
+45 error node v4.4.5
+46 error npm  v2.15.5
+47 error code E403
+48 error you do not have permission to publish "lyrical". Are you logged in as the correct user? : lyrical
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]

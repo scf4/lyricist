@@ -1,11 +1,11 @@
 {
-  "name": "lyrical",
+  "name": "lyricist",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scf4/lyrical.git"
+    "url": "git+https://github.com/scf4/lyricist.git"
   },
   "keywords": [
     "lyric",
@@ -28,7 +28,7 @@
     "request": "^2.57.0"
   },
   "bugs": {
-    "url": "https://github.com/scf4/lyrical/issues"
+    "url": "https://github.com/scf4/lyricist/issues"
   },
-  "homepage": "https://github.com/scf4/lyrical#readme"
+  "homepage": "https://github.com/scf4/lyricist#readme"
 }
