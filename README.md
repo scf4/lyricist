@@ -16,7 +16,7 @@ var lyrical = require('lyrical')(api_key);
 Use `song()` to fetch a single song:
 ```js
 lyrical.song(714198, function (err, song) {
-    console.log(song.lyrics);
+  console.log(song.lyrics);
 });
 ```
 ```js
@@ -112,14 +112,18 @@ next_page: 2
 }
 ```
 ## Get songs by an artist
-If `options.get_songs` is true, `artist()` will provide the `artist.songs` array. This could result in up to 52 simultaneous API requests. Example usage:
+`artist()` will provide the `artist.songs` array. Example usage:
 ```js
 lyrical.artist(2, {get_songs: true}, function(err, artist) {
     for(var i in artist.songs)
-        console.log(artist.songs[i].name);
+        console.log(artist.songs[i].title);
 });
 ```
-`artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the next page number assuming there are more pages. You can specify the page number like this:
+```js
+//output: '03 Bonnie & Clyde\n100$ Bill[...]
+
+```
+`artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the `next_page` number assuming there are more pages. You can specify the page number like this:
 ```js
 lyrical.artist(2, {page: 2, per_page: 50}, function(err, artist) { });
 ```
