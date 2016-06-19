@@ -1,13 +1,14 @@
 {
-  "name": "node-genius-lyrics",
-  "version": "0.0.0",
-  "description": "Adds extra functionality to node-genius",
+  "name": "lyrical",
+  "version": "0.1.0",
+  "description": "",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scf4/node-genius-lyrics.git"
+    "url": "git+https://github.com/scf4/lyrical.git"
   },
   "keywords": [
+    "lyric",
     "lyrics",
     "scrape",
     "genius",
@@ -27,7 +28,7 @@
     "request": "^2.57.0"
   },
   "bugs": {
-    "url": "https://github.com/scf4/node-genius-lyrics/issues"
+    "url": "https://github.com/scf4/lyrical/issues"
   },
-  "homepage": "https://github.com/scf4/node-genius-lyrics#readme"
+  "homepage": "https://github.com/scf4/lyrical#readme"
 }
