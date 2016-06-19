@@ -127,4 +127,4 @@ lyricist.artist(2, {get_songs: true}, function(err, artist) {
 ```js
 lyricist.artist(2, {page: 2, per_page: 50}, function(err, artist) { });
 ```
-`artist()` will **not** fetch lyrics. lyricist scrapes the Genius.com website for lyrics and this would result in too many concurrent page requests.
+`artist()` will **not** fetch lyrics. Lyricist scrapes the Genius.com website for lyrics and this would result in too many concurrent page requests.
