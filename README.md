@@ -1,21 +1,21 @@
-# Lyrical
+# lyricist
 
 Fetches song lyrics using the Genius.com API and website. Uses the [node-genius](https://github.com/alexbooker/node-genius) client.
 
 ## Installation
 ```
-$ npm install --save lyrical
+$ npm install --save lyricist
 ```
 
 ## API Key
 Get an API key at https://genius.com/api-clients.
 ```js
-var lyrical = require('lyrical')(api_key);
+var lyricist = require('lyricist')(api_key);
 ```
 ## Look up a song
 Use `song()` to fetch a single song:
 ```js
-lyrical.song(714198, function (err, song) {
+lyricist.song(714198, function (err, song) {
   console.log(song.lyrics);
 });
 ```
@@ -24,7 +24,7 @@ lyrical.song(714198, function (err, song) {
 ```
 You can also search by keywords, including lyrics:
 ```js
-lyrical.song({search: "spirit of my silence I can hear you"}, function (err, song) {
+lyricist.song({search: "spirit of my silence I can hear you"}, function (err, song) {
   console.log("%s - %s", song.primary_artist.name, song.title);
 });
 ```
@@ -33,7 +33,7 @@ lyrical.song({search: "spirit of my silence I can hear you"}, function (err, son
 ```
 or by artist/title:
 ```js
-lyrical.song({search: "Kanye West Famous"}, function (err, song) {
+lyricist.song({search: "Kanye West Famous"}, function (err, song) {
   console.log("%s - %s", song.primary_artist.name, song.title);
 });
 ```
@@ -44,7 +44,7 @@ lyrical.song({search: "Kanye West Famous"}, function (err, song) {
 
 Use `album()` to look up an album by ID. The API can't search an album by title, but `song()` will return a `songs.album.id`:
 ```js
-lyrical.album(56682, function(err, album) {
+lyricist.album(56682, function(err, album) {
   console.log("%s by %s was released on %s", album.name, album.artist.name,album.release_date);
 });
 ```
@@ -68,7 +68,7 @@ songs: [...]
 ## Get songs in an album
 `album()` provides the `album.songs` array as seen above. Example usage:
 ```js
-lyrical.album(56682, function(err, album) {
+lyricist.album(56682, function(err, album) {
   for(var i in album.songs)
     console.log(album.songs[i].title);
 });
@@ -78,12 +78,12 @@ lyrical.album(56682, function(err, album) {
 ```
 When fetching multiple songs, `.lyrics` will be `null` unless you explicitly request them like this:
 ```js
-lyrical.album(56682, {fetch_lyrics: true}, function(err, album) {});
+lyricist.album(56682, {fetch_lyrics: true}, function(err, album) {});
 ```
 ## Look up an artist
 Use `artist()` to look up an artist by ID:
 ```js
-lyrical.artist(2, function(err, artist) {
+lyricist.artist(2, function(err, artist) {
   console.log(artist.name);
 });
 ```
@@ -114,7 +114,7 @@ next_page: 2
 ## Get songs by an artist
 `artist()` will provide the `artist.songs` array. Example usage:
 ```js
-lyrical.artist(2, {get_songs: true}, function(err, artist) {
+lyricist.artist(2, {get_songs: true}, function(err, artist) {
     for(var i in artist.songs)
         console.log(artist.songs[i].title);
 });
@@ -125,6 +125,6 @@ lyrical.artist(2, {get_songs: true}, function(err, artist) {
 ```
 `artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the `next_page` number assuming there are more pages. You can specify the page number like this:
 ```js
-lyrical.artist(2, {page: 2, per_page: 50}, function(err, artist) { });
+lyricist.artist(2, {page: 2, per_page: 50}, function(err, artist) { });
 ```
-`artist()` will **not** fetch lyrics. Lyrical scrapes the Genius.com website for lyrics and this would result in too many concurrent page requests.
+`artist()` will **not** fetch lyrics. lyricist scrapes the Genius.com website for lyrics and this would result in too many concurrent page requests.
