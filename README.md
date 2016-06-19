@@ -42,7 +42,7 @@ lyrical.song({search: "Kanye West Famous"}, function (err, song) {
 ```
 ## Look up an album
 
-Use `album()` to look up an album by ID. The API can't search an album by title, but `song()` returns `songs.album.id`:
+Use `album()` to look up an album by ID. The API can't search an album by title, but `song()` will return a `songs.album.id`:
 ```js
 lyrical.album(56682, function(err, album) {
   console.log("%s by %s was released on %s", album.name, album.artist.name,album.release_date);
@@ -69,12 +69,12 @@ songs: [...]
 `album()` provides the `album.songs` array as seen above. Example usage:
 ```js
 lyrical.album(56682, function(err, album) {
-    for(i in album.songs)
-        console.log("%s: %s", i, album.songs[i].name);
+  for(var i in album.songs)
+    console.log(album.songs[i].title);
 });
 ```
 ```js
-//output: 1. Alternate World 2. Lost It To Trying [...]
+//output: Alternate World \n Lost It To Trying \n[...]
 ```
 When fetching multiple songs, `.lyrics` will be `null` unless you explicitly request them like this:
 ```js
@@ -112,14 +112,14 @@ next_page: 2
 }
 ```
 ## Get songs by an artist
-`artist()` provides the `artist.songs` array as seen above. Example usage:
+If `options.get_songs` is true, `artist()` will provide the `artist.songs` array. This could result in up to 52 simultaneous API requests. Example usage:
 ```js
-lyrical.artist(2, function(err, artist) {
-    for(i in artist.songs)
+lyrical.artist(2, {get_songs: true}, function(err, artist) {
+    for(var i in artist.songs)
         console.log(artist.songs[i].name);
 });
 ```
-`artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the next page number, or `null` if there are no more pages. You can specify the page number like this:
+`artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the next page number assuming there are more pages. You can specify the page number like this:
 ```js
 lyrical.artist(2, {page: 2, per_page: 50}, function(err, artist) { });
 ```
