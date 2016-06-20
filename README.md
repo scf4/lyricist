@@ -1,4 +1,4 @@
-# lyricist
+# Lyricist
 
 Fetches song lyrics using the Genius.com API and website. Uses the [node-genius](https://github.com/alexbooker/node-genius) client.
 
