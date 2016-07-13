@@ -1,6 +1,6 @@
 {
   "name": "lyricist",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fetches song lyrics using the Genius.com API and website.",
   "main": "lib/index.js",
   "repository": {
