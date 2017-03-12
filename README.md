@@ -64,16 +64,17 @@ release_date: "2013-08-21",
 songs: [...]
 }
 ```
+Check the [Genius.com API docs](https://docs.genius.com) for more info.
+
 ## Get songs in an album
 `album()` provides the `album.songs` array as seen above. Example usage:
 ```js
 lyricist.album(56682, function(err, album) {
-  for(var i in album.songs)
-    console.log(album.songs[i].title);
+    console.log(album.songs.map(song => song.title));
 });
 ```
 ```js
-// Output: Alternate World \n Lost It To Trying \n[...]
+// Output: ['Alternate World', 'Lost It To Trying', ...]
 ```
 When fetching multiple songs, `song.lyrics` will be `null` unless you explicitly request them like this:
 ```js
@@ -110,16 +111,17 @@ songs: [...],
 next_page: 2
 }
 ```
+Check the [Genius.com API docs](https://docs.genius.com) for more info.
+
 ## Get songs by an artist
 `artist()` will provide the `artist.songs` array. Example usage:
 ```js
 lyricist.artist(2, { get_songs: true }, function(err, artist) {
-    for(var i in artist.songs)
-        console.log(artist.songs[i].title);
+  console.log(artist.songs.map(song => song.title));
 });
 ```
 ```js
-// Output: '03 Bonnie & Clyde\n100$ Bill[...]
+// Output: ['03 Bonnie & Clyde', 100$ Bill, ...]
 
 ```
 `artist()` will show  **20 results per page** by default, and can be as high as 50. `artist.next_page` will return the `next_page` number assuming there are more pages. You can specify the page number like this:
@@ -127,3 +129,6 @@ lyricist.artist(2, { get_songs: true }, function(err, artist) {
 lyricist.artist(2, { page: 2, per_page: 50 }, function(err, artist) { ... });
 ```
 `artist()` will **not** fetch lyrics. Lyricist scrapes the Genius.com website for lyrics and this would result in too many concurrent page requests.
+
+## Warning ⚠️
+Take care when fetching lyrics. Use caching and rate-limit your app's requests as much as possible.
