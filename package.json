@@ -1,34 +1,41 @@
 {
   "name": "lyricist",
-  "version": "0.1.1",
+  "version": "2.0.0",
   "description": "Fetches song lyrics using the Genius.com API and website.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scf4/lyricist.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build": "rimraf dist && babel lib --out-dir dist --ignore *.test.js"
   },
   "keywords": [
     "lyric",
     "lyrics",
     "scrape",
-    "genius",
-    "node-genius"
+    "genius"
   ],
-  "author": "Scott Michael <beats.cd@me.com> (https://twitter.com/scf4)",
+  "author": "scf4 (https://github.com/scf4)",
   "license": "MIT",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-jshint": "^1.11.0",
-    "jshint-stylish": "^2.0.0",
-    "express": "^4.12.4"
-  },
-  "dependencies": {
-    "cheerio": "^0.20.0",
-    "node-genius": "^1.1.0",
-    "request": "^2.57.0"
-  },
   "bugs": {
     "url": "https://github.com/scf4/lyricist/issues"
   },
-  "homepage": "https://github.com/scf4/lyricist#readme"
+  "homepage": "https://github.com/scf4/lyricist#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "jest": "^19.0.2",
+    "rimraf": "^2.6.1"
+  }
 }
