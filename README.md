@@ -29,6 +29,7 @@ Use `song()` to fetch a song by ID:
 ```js
 const song = await lyricist.song(714198);
 console.log(song.title);
+
 // output: Death with Dignity
 ```
 
@@ -43,6 +44,7 @@ The Genius API doesn't offer lyrics, but Lyricist can scrape Genius.com for you.
 ```js
 const song = await lyricist.song(714198, { fetchLyrics: true });
 console.log(song.lyrics);
+
 // output: Spirit of my silence I can hear you...
 ```
 ## Look up an album
@@ -51,7 +53,7 @@ Use `album()` to look up an album by ID. The Genius API doesn't allow you to sea
 
 ```js
 const album = await lyricist.album(56682);
-console.log('%s by %s, album.name, album.artist.name);
+console.log('%s by %s', album.name, album.artist.name);
 
 // output: Lanterns by Son Lux
 ```
@@ -69,7 +71,7 @@ console.log(album.songs);
 ## Look up an artist
 Use `artist()` to look up an artist by ID:
 ```js
-const artist = lyricist.artist(2);
+const artist = await lyricist.artist(2);
 console.log(artist.name);
 // output: Jay Z
 ```
@@ -77,7 +79,7 @@ console.log(artist.name);
 ## Get songs by an artist
 Use `songsByArtist()` to list an artist's songs. Example usage:
 ```js
-const songs = lyricist.songsByArtist(2);
+const songs = await lyricist.songsByArtist(2);
 ```
 `songsByArtist()` will show  **20 results per page** by default, and can be as high as 50.
 
