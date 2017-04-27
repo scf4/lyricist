@@ -1,8 +1,8 @@
+dist
 logs
 *.log
-lib/test_key.js
-dist/test_key.js
 coverage
+lib/test_key.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
