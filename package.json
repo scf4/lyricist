@@ -27,6 +27,7 @@
   "homepage": "https://github.com/scf4/lyricist#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "lyricist": "^2.0.0",
     "node-fetch": "^1.6.3"
   },
   "devDependencies": {

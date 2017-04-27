@@ -41,8 +41,8 @@ lyricist.song(714198).then(song => console.log(song.title));
 ## Get song lyrics
 The Genius API doesn't offer lyrics, but Lyricist can scrape Genius.com for you. Simply provide the `fetchLyrics` option like this:
 ```js
-const lyrics = await lyricist.song(714198, { fetchLyrics: true });
-
+const song = await lyricist.song(714198, { fetchLyrics: true });
+console.log(song.lyrics);
 // output: Spirit of my silence I can hear you...
 ```
 ## Look up an album
