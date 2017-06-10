@@ -1,4 +1,6 @@
+.env
 dist
+node6
 logs
 *.log
 coverage

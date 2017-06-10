@@ -1,9 +1,9 @@
 # Lyricist 🎤
-⭐️ Genius.com API client (with lyrics scraper)
+⭐️ Genius.com API client with lyrics scraper
 
 ## v2.0
 
-Version 2.0 is a complete rewrite with promises and async/await.
+Version 2.0 is a complete rewrite with async/await.
 
 ## Installation
 ```
@@ -16,11 +16,18 @@ or
 npm install lyricist --save
 ```
 
+## Node <= 6
+Older versions of node don't support async/await and will need to use the transpiled version (lyricist/node6), along with promises:
+```js
+const Lyricist = require('lyricist/node6');
+const lyricist = new Lyricist(accessToken);
+lyricist.song(714198).then(song => console.log(song.title));
+```
+
 ## API Key
 Get an access token at https://genius.com/api-clients.
 
 ```js
-import Lyricist from 'lyricist';
 const lyricist = new Lyricist(accessToken);
 ```
 
@@ -33,11 +40,10 @@ console.log(song.title);
 // output: Death with Dignity
 ```
 
-#### or with promises:
+#### or with promises for node <= 6:
 ```js
 lyricist.song(714198).then(song => console.log(song.title));
 ```
-> Note: The rest of the examples use async/await for readability.
 
 ## Get song lyrics
 The Genius API doesn't offer lyrics, but Lyricist can scrape Genius.com for you. Simply provide the `fetchLyrics` option like this:
@@ -65,7 +71,7 @@ The Genius API doesn't provide tracklists, but Lyricist can scrape Genius.com an
 const album = await lyricist.album(56682, { fetchTracklist: true });
 console.log(album.songs);
 
-// output: [{ id: 502102, title: 'Alternate World' }, { id: 267773, title: 'Lost It To Trying' }, ...]
+// output: [{ id: 502102, title: 'Alternate World', ... }, { id: 267773, title: 'Lost It To Trying', ... }, ...]
 
 ```
 ## Look up an artist

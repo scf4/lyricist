@@ -1,6 +1,6 @@
 {
   "name": "lyricist",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Fetches song lyrics using the Genius.com API and website.",
   "main": "dist/index.js",
   "repository": {
@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "build": "rimraf dist && babel lib --out-dir dist --ignore *.test.js"
+    "build": "rimraf node6 && babel lib --out-dir node6 --ignore *.test.js"
   },
   "keywords": [
     "lyric",
@@ -31,12 +31,15 @@
     "node-fetch": "^1.6.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
     "babel-jest": "^19.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
+    "dotenv": "^4.0.0",
     "jest": "^19.0.2",
     "rimraf": "^2.6.1"
   }
