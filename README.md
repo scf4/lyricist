@@ -20,8 +20,6 @@ npm install lyricist --save
 Older versions of node don't support async/await and will need to use the transpiled version (lyricist/node6), along with promises:
 ```js
 const Lyricist = require('lyricist/node6');
-const lyricist = new Lyricist(accessToken);
-lyricist.song(714198).then(song => console.log(song.title));
 ```
 
 ## API Key
