@@ -57,7 +57,7 @@ Use `album()` to look up an album by ID. The Genius API doesn't allow you to sea
 
 ```js
 const album = await lyricist.album(56682);
-console.log('%s by %s', album.name, album.artist.name);
+console.log(`${album.name} by ${album.artist.name}`);
 
 // output: Lanterns by Son Lux
 ```
@@ -99,7 +99,7 @@ const songs = await lyricist.songsByArtist(2, { page: 2, perPage: 50 });
 ```
 
 ## Warning ⚠️
-Take care when fetching lyrics. Use caching and rate-limit your app's requests as much as possible.
+Take care when fetching lyrics. This feature isn't officially supported by the Genius API, so use caching and rate-limit your app's requests as much as possible.
 
 ## Genius API Docs
 
