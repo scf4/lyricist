@@ -43,6 +43,14 @@ console.log(song.title);
 lyricist.song(714198).then(song => console.log(song.title));
 ```
 
+## Set text_format
+The Genius API lets you specify how the response text is formatted. Supported formatting options are `dom` (default), `plain` and `html`. See https://docs.genius.com/#/response-format-h1 for further information. The `textFormat` option is supported by `song()`, `album()` and `artist()`.
+```js
+lyricist.song(714198, { textFormat: 'html' }).then(song => console.log(song.description.html));
+
+// output: <p>The first track off of Sufjan’s 2015 album...
+```
+
 ## Get song lyrics
 The Genius API doesn't offer lyrics, but Lyricist can scrape Genius.com for you. Simply provide the `fetchLyrics` option like this:
 ```js
