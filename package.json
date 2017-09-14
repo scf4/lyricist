@@ -15,17 +15,9 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "lib/*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "lib/*.js": ["prettier --write", "git add"]
   },
-  "keywords": [
-    "lyric",
-    "lyrics",
-    "scrape",
-    "genius"
-  ],
+  "keywords": ["lyric", "lyrics", "scrape", "genius"],
   "author": "scf4 (https://github.com/scf4)",
   "license": "MIT",
   "bugs": {
@@ -33,12 +25,12 @@
   },
   "homepage": "https://github.com/scf4/lyricist#readme",
   "dependencies": {
-    "babel-jest": "^21.0.2",
     "cheerio": "^0.22.0",
     "node-fetch": "^1.6.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-jest": "^21.0.2",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.2",
     "dotenv": "^4.0.0",
