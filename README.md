@@ -16,11 +16,13 @@ or
 npm install lyricist --save
 ```
 
-## Node <= 6
-Older versions of node don't support async/await and will need to use the transpiled version (lyricist/node6), along with promises:
+## Node 6
+Node 6 doesn't support async/await and will need to use the transpiled version (lyricist/node6), along with promises:
 ```js
 const Lyricist = require('lyricist/node6');
 ```
+
+> Note: Older versions of Node aren't currently supported. Open an issue if you'd like to see support for them
 
 ## API Key
 Get an access token at https://genius.com/api-clients.
