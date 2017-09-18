@@ -31,6 +31,26 @@ Get an access token at https://genius.com/api-clients.
 const lyricist = new Lyricist(accessToken);
 ```
 
+## Search
+Use `search()` to query all content hosted on Genius (all songs).
+```js
+query = "Virtual Insanity - Jamiroquai"
+uriencodedQuery = encodeURIComponent(query)
+searchResults = await lyricist.search(uriencodedQuery)
+console.log(searchResults);
+
+// output: array of song objects
+[ { annotation_count: 1,
+    api_path: '/songs/1952220',
+    full_title: 'Virtual insanity - remastered by Jamiroquai',
+    header_image_thumbnail_url: 'https://images.genius.com/cd9bd5e1d6d23c9a8b044843831d4b3c.300x300x1.png',
+    header_image_url: 'https://images.genius.com/cd9bd5e1d6d23c9a8b044843831d4b3c.820x820x1.png',
+    id: 1952220,
+    ...
+    }
+]
+```
+
 ## Look up a song
 Use `song()` to fetch a song by ID:
 ```js
