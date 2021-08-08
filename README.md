@@ -1,6 +1,8 @@
 # Lyricist 🎤
 ⭐️ Genius.com API client with lyrics scraper
 
+(No longer being actively developed)
+
 ## v2.0
 
 Version 2.0 is a complete rewrite with async/await.
