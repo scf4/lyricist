@@ -129,6 +129,8 @@ Node 6 doesn't support async/await and will need to use the transpiled version (
 const Lyricist = require('lyricist/node6');
 ```
 
+> Future updates will likely remove this support for old versions of Node
+
 ## Genius API Docs
 
 Check the [Genius.com API docs](https://docs.genius.com) for more info.
