@@ -33,7 +33,7 @@ Get an access token at https://genius.com/api-clients.
 const lyricist = new Lyricist(accessToken);
 ```
 
-## Look up a song
+## Look up a song by ID
 Use `song()` to fetch a song by ID:
 ```js
 const song = await lyricist.song(714198);
@@ -89,6 +89,7 @@ Use `artist()` to look up an artist by ID:
 ```js
 const artist = await lyricist.artist(2);
 console.log(artist.name);
+
 // output: Jay Z
 ```
 
@@ -108,6 +109,28 @@ You can provide options as a second parameter. The available options are:
 Example:
 ```js
 const songs = await lyricist.songsByArtist(2, { page: 2, perPage: 50 });
+```
+
+## Search
+Use `search()` to search for songs:
+```js
+const songs = await lyricist.search('Virtual Insanity - Jamiroquai');
+console.log(songs);
+
+/* output: (Array of all matching songs)
+[
+  {
+    annotation_count: 1,
+    api_path: '/songs/1952220',
+    full_title: 'Virtual insanity - remastered by Jamiroquai',
+    header_image_thumbnail_url: 'https://images.genius.com/cd9bd5e1d6d23c9a8b044843831d4b3c.300x300x1.png',
+    header_image_url: 'https://images.genius.com/cd9bd5e1d6d23c9a8b044843831d4b3c.820x820x1.png',
+    id: 1952220,
+    ...
+  },
+  ...
+]
+*/
 ```
 
 ## Warning ⚠️
